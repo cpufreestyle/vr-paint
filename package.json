@@ -1,6 +1,6 @@
 {
   "name": "a-painter",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "A-Painter",
   "scripts": {
     "atlas": "spritesheet-js --name brush_atlas --path assets/images brushes/*.png",

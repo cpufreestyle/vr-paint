@@ -10,7 +10,7 @@ module.exports = function (callback) {
     if (sceneEl.hasLoaded) {
       callback();
     } else {
-      sceneEl.addEventListener('loaded', callback());
+      sceneEl.addEventListener('loaded', callback);
     }
   }
 }
