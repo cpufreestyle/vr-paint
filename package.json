@@ -1,7 +1,8 @@
 {
-  "name": "a-painter",
+  "name": "vr-paint",
   "version": "1.0.0",
-  "description": "A-Painter",
+  "description": "基于 A-Frame 的 VR 绘画应用 / VR painting application built with A-Frame",
+  "main": "index.html",
   "scripts": {
     "atlas": "spritesheet-js --name brush_atlas --path assets/images brushes/*.png",
     "build": "webpack --mode=production",
@@ -9,7 +10,25 @@
     "start": "webpack-dev-server --host 0.0.0.0 --mode=development",
     "lint": "semistandard -v | snazzy"
   },
-  "repository": "aframevr/a-painter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vr-paint.git"
+  },
+  "keywords": [
+    "vr",
+    "paint",
+    "painting",
+    "webxr",
+    "webvr",
+    "a-frame",
+    "aframe",
+    "virtual-reality",
+    "虚拟现实",
+    "绘画",
+    "3d",
+    "webgl"
+  ],
+  "author": "A-Frame Team (forked by vr-paint contributors)",
   "license": "MIT",
   "semistandard": {
     "ignore": [
@@ -28,5 +47,15 @@
   },
   "dependencies": {
     "aframe-tooltip-component": "^0.1.2"
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 80",
+    "Firefox >= 75",
+    "Edge >= 80",
+    "Safari >= 13"
+  ]
 }

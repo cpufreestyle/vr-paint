@@ -1,9 +1,62 @@
+# 系统文件 / System files
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# 依赖 / Dependencies
+node_modules/
+vendor/
+
+# 构建输出 / Build output
+build/
+dist/
 .cache
 gh-pages/
-node_modules
+
+# 日志文件 / Logs
 npm-debug.log*
-*.wav
-*.bat
-.vs
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# 环境文件 / Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE / 编辑器 / IDE/Editor
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 测试覆盖 / Test coverage
+coverage/
+.nyc_output/
+
+# 临时文件 / Temporary files
+*.tmp
+*.temp
+check.txt
+demo.apa
+
+# 绘画文件（示例文件）/ Painting files (sample files)
+*.apa
+!assets/**/*.apa
+
+# Vercel
 .vercel
+
+# 音频文件（如果有生成的）/ Audio files (if generated)
+*.wav
+*.mp3
+*.ogg
+
+# 批处理文件 / Batch files (if not part of the project)
+*.bat
+*.cmd
