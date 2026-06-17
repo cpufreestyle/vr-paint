@@ -1,5 +1,6 @@
 html, body {
-  background-color:#030404;
+  background-color:#0a1f0a;
+  /* 端午节深绿背景 */
 }
 
 #apainter-ui{
@@ -24,23 +25,29 @@ html, body {
 #apainter-ui .help h1{
   font-size: 22px;
   font-weight: 100;
-  color: #e42b5a;
+  color: #c41e3a;
   margin-top: 0;
+  text-shadow: 2px 2px 4px rgba(196, 30, 58, 0.3);
+  /* 端午红标题 */
 }
 
 #apainter-ui .button {
-  background-color: #ef2d5e;
-  color: #fff;
+  background-color: #f4c430;
+  color: #333;
   cursor: pointer;
   font-size: 12px;
   width: 130px;
   text-align: center;
   max-width: 115px;
   padding: 6px;
+  border: 2px solid #c41e3a;
+  /* 龙舟金按钮，端午红边框 */
 }
 
 #apainter-ui .button:hover {
-  background-color: #f43b6a;
+  background-color: #ffdb4a;
+  border-color: #ff6b6b;
+  /* 悬停时更亮的金色 */
 }
 
 #apainter-ui .form {
@@ -61,16 +68,18 @@ html, body {
 #apainter-ui .progress{
   font-size: 22px;
   font-weight: 100;
-  color: #e42b5a;
-  border-bottom: 1px solid #e42b5a;
-  text-shadow: 0px 2px 1px #000;
+  color: #c41e3a;
+  border-bottom: 1px solid #c41e3a;
+  text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+  /* 端午红进度条 */
 }
 
 #apainter-ui .bar{
   width: 0%;
   height: 3px;
   margin-top: 13px;
-  background-color: #e42b5a;
+  background-color: linear-gradient(90deg, #c41e3a, #f4c430, #2d5016);
+  /* 端午节渐变进度条 */
 }
 
 #apainter-logo {
@@ -92,5 +101,38 @@ html, body {
   left: 268px;
   display: inline-block;
   font: 18px arial, sans-serif;
-  color: #e42b5a;
+  color: #c41e3a;
+  text-shadow: 1px 1px 2px rgba(196, 30, 58, 0.3);
+  /* 端午红作者名 */
+}
+
+/* 端午节主题横幅 */
+#dragonboat-festival-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.9), rgba(244, 196, 48, 0.9));
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  border: 3px solid #f4c430;
+}
+
+#dragonboat-festival-banner h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+#dragonboat-festival-banner h2 {
+  margin: 5px 0 0 0;
+  font-size: 18px;
+  color: #2d5016;
+  font-weight: 300;
+  letter-spacing: 2px;
 }
