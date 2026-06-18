@@ -1,8 +1,17 @@
-# VR 绘画 (VR-Paint)
+# 🐉 VR 绘画 - 端午节特别版 (VR-Paint Dragon Boat Festival)
 
-基于 [A-Frame](https://aframe.io/) 的 VR 绘画 Web 应用，fork 自 [aframevr/a-painter](https://github.com/aframevr/a-painter)。
+端午节主题 VR 绘画 Web 应用，基于 [A-Frame](https://aframe.io/) 开发。
 
-在浏览器中体验虚拟现实绘画，无需安装任何软件！
+在浏览器中体验虚拟现实绘画，感受端午节的氛围！
+
+**作者**: [MichaelQiu (cpufreestyle)](https://github.com/cpufreestyle)
+
+## 🎊 端午节主题特色
+
+- 🐉 **端午安康 3D 文字** - 漂浮在场景中的祝福文字
+- 🍃 **端午节配色** - 端午红、龙舟金、粽叶绿
+- 🟢 **粽子 3D 模型** - 立体粽子装饰场景
+- 🎨 **主题 UI** - 端午节特色配色方案
 
 ## 📸 项目截图
 
@@ -13,8 +22,9 @@
 
 ## 🚀 在线演示
 
-- **在线体验**: [https://aframe.io/a-painter/](https://aframe.io/a-painter/)
-- **本分支演示**: (如果有部署，请添加链接)
+- **本地预览**: `python -m http.server 8000` 然后访问 `http://localhost:8000`
+- **GitHub 仓库**: [cpufreestyle/vr-paint](https://github.com/cpufreestyle/vr-paint)
+- **Gitee 仓库**: [cpufreestyle/vr-paint](https://gitee.com/cpufreestyle/vr-paint)
 
 > **注意**: 需要配备 WebXR 支持的浏览器和 VR 设备（可选）才能获得最佳体验。
 
@@ -42,7 +52,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/vr-paint.git
+git clone https://github.com/cpufreestyle/vr-paint.git
 cd vr-paint
 
 # 安装依赖
@@ -189,15 +199,16 @@ string = uint8 (size) + size * uint8
 
 ## 🙏 致谢
 
-- 原始项目: [aframevr/a-painter](https://github.com/aframevr/a-painter)
+- 原始项目: [aframevr/a-painter](https://github.com/aframevr/a-painter) by A-Frame Team
 - 基于 [A-Frame](https://aframe.io/) 构建
-- 受到 Mozilla VR 团队工作的启发
+- 端午节主题改造: MichaelQiu (cpufreestyle)
 
 ## 📧 联系方式
 
-- 问题反馈: [GitHub Issues](https://github.com/yourusername/vr-paint/issues)
-- 作品分享: [社区画廊](https://github.com/aframevr/a-painter/issues/99)
+- GitHub: [cpufreestyle/vr-paint](https://github.com/cpufreestyle/vr-paint)
+- Gitee: [cpufreestyle/vr-paint](https://gitee.com/cpufreestyle/vr-paint)
+- 问题反馈: [GitHub Issues](https://github.com/cpufreestyle/vr-paint/issues)
 
 ---
 
-**用 ❤️ 和 A-Frame 制作**
+**🐉 端午安康！用 ❤️ 和 A-Frame 制作**
