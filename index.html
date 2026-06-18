@@ -99,31 +99,85 @@
         <a-animation attribute="material.opacity" from="0.5" to="0" dur="6000" repeat="indefinite"></a-animation>
       </a-ring>
       
-      <!--精致龙舟-->
-      <a-entity id="dragonboat-detailed" position="-5 0.15 -8" rotation="0 25 0">
-        <a-box position="0 0.08 0" width="3" height="0.2" depth="0.8" color="#8b4513" material="opacity: 0.95"></a-box>
-        <a-cylinder position="0 0 0" rotation="0 0 90" radius="0.4" height="3" color="#6b3410" material="opacity: 0.9"></a-cylinder>
-        <a-cone position="1.7 0.08 0" rotation="0 0 -90" radius-bottom="0.45" radius-top="0.1" height="0.6" color="#c41e3a"></a-cone>
-        <a-sphere position="1.85 0.2 0.15" radius="0.06" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.5"></a-sphere>
-        <a-sphere position="1.85 0.2 -0.15" radius="0.06" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.5"></a-sphere>
-        <a-cylinder position="1.5 0.4 0.3" rotation="0 0 -30" radius="0.02" height="0.3" color="#daa520"></a-cylinder>
-        <a-cylinder position="1.5 0.4 -0.3" rotation="0 0 30" radius="0.02" height="0.3" color="#daa520"></a-cylinder>
-        <a-cone position="-1.6 0.08 0" rotation="0 0 90" radius-bottom="0.35" radius-top="0.08" height="0.5" color="#c41e3a"></a-cone>
-        <a-box position="0 0.22 0.42" width="3.2" height="0.03" depth="0.03" color="#ffd700"></a-box>
-        <a-box position="0 0.22 -0.42" width="3.2" height="0.03" depth="0.03" color="#ffd700"></a-box>
-        <a-cylinder position="0.3 0.35 0.5" rotation="70 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
-        <a-cylinder position="0.3 0.35 -0.5" rotation="110 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
-        <a-cylinder position="-0.6 0.35 0.5" rotation="70 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
-        <a-cylinder position="-0.6 0.35 -0.5" rotation="110 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
-        <a-cylinder position="0 0.35 0" rotation="90 0 0" radius="0.15" height="0.25" color="#c41e3a"></a-cylinder>
-        <a-cylinder position="0 0.38 0" rotation="90 0 0" radius="0.18" height="0.03" color="#ffd700"></a-cylinder>
+      <!--真龙形龙舟-->
+      <a-entity id="dragon-boat-real" position="-5 0.15 -8" rotation="0 25 0">
+        <!--龙身主体（椭圆形）-->
+        <a-cylinder position="0 0.1 0" rotation="0 0 90" radius="0.35" height="2.8" color="#8b4513"></a-cylinder>
+        <a-cylinder position="0 0.05 0" rotation="0 0 90" radius="0.4" height="2.5" color="#6b3410" material="opacity: 0.9"></a-cylinder>
+        
+        <!--龙鳞装饰（沿龙身排列）-->
+        <a-cone position="-0.8 0.3 0.38" rotation="90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="-0.3 0.32 0.38" rotation="90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="0.2 0.32 0.38" rotation="90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="0.7 0.3 0.38" rotation="90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="-0.8 0.3 -0.38" rotation="-90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="-0.3 0.32 -0.38" rotation="-90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="0.2 0.32 -0.38" rotation="-90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        <a-cone position="0.7 0.3 -0.38" rotation="-90 0 0" radius-bottom="0.08" radius-top="0.02" height="0.15" color="#c41e3a"></a-cone>
+        
+        <!--龙头上半部分-->
+        <a-sphere position="1.5 0.15 0" radius="0.35" color="#c41e3a"></a-sphere>
+        <a-sphere position="1.7 0.2 0" radius="0.28" color="#a01830"></a-sphere>
+        <a-sphere position="1.85 0.25 0" radius="0.2" color="#8b0000"></a-sphere>
+        
+        <!--龙嘴（张开）-->
+        <a-cone position="2.0 0.1 0" rotation="0 0 -90" radius-bottom="0.25" radius-top="0.1" height="0.4" color="#c41e3a"></a-cone>
+        <a-cone position="2.0 0.18 0.08" rotation="20 0 -90" radius-bottom="0.12" radius-top="0.05" height="0.3" color="#ffd700"></a-cone>
+        <a-cone position="2.0 0.18 -0.08" rotation="-20 0 -90" radius-bottom="0.12" radius-top="0.05" height="0.3" color="#ffd700"></a-cone>
+        
+        <!--龙眼（发光）-->
+        <a-sphere position="1.6 0.35 0.2" radius="0.08" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 1"></a-sphere>
+        <a-sphere position="1.6 0.35 -0.2" radius="0.08" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 1"></a-sphere>
+        <a-sphere position="1.62 0.35 0.2" radius="0.04" color="#000"></a-sphere>
+        <a-sphere position="1.62 0.35 -0.2" radius="0.04" color="#000"></a-sphere>
+        
+        <!--龙角-->
+        <a-cylinder position="1.4 0.55 0.2" rotation="0 0 30" radius="0.04" height="0.5" color="#daa520"></a-cylinder>
+        <a-cylinder position="1.4 0.55 -0.2" rotation="0 0 -30" radius="0.04" height="0.5" color="#daa520"></a-cylinder>
+        <a-cone position="1.4 0.82 0.2" rotation="0 0 30" radius-bottom="0.06" radius-top="0.02" height="0.2" color="#daa520"></a-cone>
+        <a-cone position="1.4 0.82 -0.2" rotation="0 0 -30" radius-bottom="0.06" radius-top="0.02" height="0.2" color="#daa520"></a-cone>
+        
+        <!--龙须-->
+        <a-cylinder position="1.9 0.15 0.3" rotation="0 0 10" radius="0.015" height="0.5" color="#daa520"></a-cylinder>
+        <a-cylinder position="1.9 0.15 -0.3" rotation="0 0 -10" radius="0.015" height="0.5" color="#daa520"></a-cylinder>
+        
+        <!--龙耳/龙鳍-->
+        <a-cone position="1.3 0.4 0.35" rotation="0 0 60" radius-bottom="0.12" radius-top="0.02" height="0.25" color="#c41e3a"></a-cone>
+        <a-cone position="1.3 0.4 -0.35" rotation="0 0 -60" radius-bottom="0.12" radius-top="0.02" height="0.25" color="#c41e3a"></a-cone>
+        
+        <!--龙尾（分叉）-->
+        <a-cylinder position="-1.6 0.1 0" rotation="0 0 90" radius="0.25" height="0.4" color="#c41e3a"></a-cylinder>
+        <a-cone position="-1.9 0.2 0.15" rotation="0 0 -60" radius-bottom="0.12" radius-top="0.02" height="0.4" color="#c41e3a"></a-cone>
+        <a-cone position="-1.9 0.2 -0.15" rotation="0 0 60" radius-bottom="0.12" radius-top="0.02" height="0.4" color="#c41e3a"></a-cone>
+        
+        <!--龙脊（龙身上的脊）-->
+        <a-box position="0 0.4 0" width="2.2" height="0.08" depth="0.1" color="#ffd700"></a-box>
+        
+        <!--龙舟中央大鼓-->
+        <a-cylinder position="0 0.45 0" rotation="90 0 0" radius="0.2" height="0.3" color="#c41e3a"></a-cylinder>
+        <a-cylinder position="0 0.48 0" rotation="90 0 0" radius="0.22" height="0.04" color="#ffd700"></a-cylinder>
+        
+        <!--划桨位-->
+        <a-cylinder position="0.3 0.5 0.55" rotation="70 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="0.3 0.5 -0.55" rotation="110 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="-0.4 0.5 0.55" rotation="70 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="-0.4 0.5 -0.55" rotation="110 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
       </a-entity>
       
-      <!--远处龙舟-->
-      <a-entity position="6 0.12 -12" rotation="0 -15 0" scale="0.8 0.8 0.8">
-        <a-box position="0 0.08 0" width="3" height="0.2" depth="0.8" color="#8b4513" material="opacity: 0.8"></a-box>
-        <a-cone position="1.6 0.08 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0.1" height="0.5" color="#ffd700"></a-cone>
-        <a-cone position="-1.5 0.08 0" rotation="0 0 90" radius-bottom="0.35" radius-top="0.08" height="0.4" color="#ffd700"></a-cone>
+      <!--远处简化龙舟（缩小版）-->
+      <a-entity position="6 0.12 -12" rotation="0 -15 0" scale="0.7 0.7 0.7">
+        <!--龙身-->
+        <a-cylinder position="0 0.1 0" rotation="0 0 90" radius="0.3" height="2.5" color="#8b4513"></a-cylinder>
+        <!--龙头-->
+        <a-sphere position="1.3 0.12 0" radius="0.3" color="#ffd700"></a-sphere>
+        <a-cone position="1.5 0.1 0" rotation="0 0 -90" radius-bottom="0.2" radius-top="0.08" height="0.3" color="#ffd700"></a-cone>
+        <!--龙眼-->
+        <a-sphere position="1.4 0.25 0.12" radius="0.05" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.8"></a-sphere>
+        <a-sphere position="1.4 0.25 -0.12" radius="0.05" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.8"></a-sphere>
+        <!--龙尾-->
+        <a-cylinder position="-1.5 0.1 0" rotation="0 0 90" radius="0.2" height="0.3" color="#ffd700"></a-cylinder>
+        <a-cone position="-1.8 0.18 0.1" rotation="0 0 -50" radius-bottom="0.1" radius-top="0.02" height="0.3" color="#ffd700"></a-cone>
+        <a-cone position="-1.8 0.18 -0.1" rotation="0 0 50" radius-bottom="0.1" radius-top="0.02" height="0.3" color="#ffd700"></a-cone>
       </a-entity>
       
       <!--真实粽子-->
