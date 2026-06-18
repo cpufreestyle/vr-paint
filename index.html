@@ -39,29 +39,80 @@
         <audio id="ui_tick" src="https://cdn.aframe.io/a-painter/sounds/ui_tick.ogg"></audio>
         <audio id="ui_paint" src="https://cdn.aframe.io/a-painter/sounds/ui_paint.ogg"></audio>
       </a-assets>
-      <a-light type="point" light="color: #f4c430; intensity:0.8" position="3 10 1"></a-light>
-      <a-light type="point" light="color: #c41e3a; intensity:0.3" position="-3 -10 0"></a-light>
-      <a-light type="hemisphere" groundColor="#2d5016" intensity="0.9"></a-light>
+      
+      <!--端午节增强版场景-->
+      <a-light type="ambient" light="color: #f4c430; intensity: 0.3"></a-light>
+      <a-light type="point" light="color: #ff6b35; intensity: 1.2" position="5 8 -3"></a-light>
+      <a-light type="point" light="color: #c41e3a; intensity: 0.8" position="-5 6 2"></a-light>
+      <a-light type="point" light="color: #ffd700; intensity: 0.6" position="0 10 0"></a-light>
+      <a-light type="directional" light="color: #fff5e6; intensity: 0.5" position="2 4 3"></a-light>
+      
+      <!--端午节渐变天空-->
+      <a-sky id="dragonboat-sky" 
+             geometry="primitive:sphere; radius:40; phiLength:360; phiStart:0; thetaLength:180"
+             material="shader: flat; side:back; color: #1a0a2e">
+        <a-animation attribute="material.color" from="#1a0a2e" to="#2d1b4e" dur="8000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-sky>
+      
+      <!--夕阳余晖-->
+      <a-circle id="sunset-glow" 
+                position="0 3 -20" 
+                radius="8" 
+                material="shader: flat; color: #ff6b35; opacity: 0.6; transparent: true">
+        <a-animation attribute="material.opacity" from="0.4" to="0.7" dur="4000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-circle>
+      
+      <!--端午节水面/地面-->
+      <a-plane id="water-ground"
+               position="0 -0.1 0" 
+               rotation="-90 0 0" 
+               width="50" 
+               height="50"
+               material="color: #0a3d62; opacity: 0.9; transparent: true; metalness: 0.8; roughness: 0.2">
+        <a-animation attribute="material.color" from="#0a3d62" to="#1e5f74" dur="6000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-plane>
+      
+      <!--水波纹效果-->
+      <a-ring id="ripple1" position="2 0.05 -3" rotation="-90 0 0" radius-inner="0.1" radius-outer="0.3"
+              material="color: #4ecdc4; opacity: 0.5; transparent: true; shader: flat">
+        <a-animation attribute="scale" from="1 1 1" to="3 3 1" dur="3000" repeat="indefinite"></a-animation>
+        <a-animation attribute="material.opacity" from="0.6" to="0" dur="3000" repeat="indefinite"></a-animation>
+      </a-ring>
+      <a-ring id="ripple2" position="-2 0.05 -2" rotation="-90 0 0" radius-inner="0.1" radius-outer="0.3"
+              material="color: #4ecdc4; opacity: 0.5; transparent: true; shader: flat">
+        <a-animation attribute="scale" from="1 1 1" to="3 3 1" dur="4000" repeat="indefinite"></a-animation>
+        <a-animation attribute="material.opacity" from="0.6" to="0" dur="4000" repeat="indefinite"></a-animation>
+      </a-ring>
+      <a-ring id="ripple3" position="0 0.05 -5" rotation="-90 0 0" radius-inner="0.1" radius-outer="0.3"
+              material="color: #4ecdc4; opacity: 0.5; transparent: true; shader: flat">
+        <a-animation attribute="scale" from="1 1 1" to="4 4 1" dur="5000" repeat="indefinite"></a-animation>
+        <a-animation attribute="material.opacity" from="0.6" to="0" dur="5000" repeat="indefinite"></a-animation>
+      </a-ring>
+      
       <a-entity id="logo" logo-model
                 animation="dur: 4000; property: logo-model.opacity; from: 1; to: 0; startEvents: painting-started"></a-entity>
-      <a-entity id="ground"
-                geometry="primitive: box; width: 12; height: 0.01; depth: 12"
-                material="shader: flat; color: #2d5016">
-      </a-entity>
       
       <!-- 端午节主题元素 -->
       <!-- 端午安康 3D 文字（使用 HTML 叠加层） -->
-      <a-entity id="dragonboat-festival-text" position="0 2.5 -4"
-                text="value: 端午安康; color: #c41e3a; align: center; width: 8"></a-entity>
+      <a-entity id="dragonboat-festival-text" position="0 2.8 -4"
+                text="value: 端午安康; color: #c41e3a; align: center; width: 8; font: mozillavr"
+                animation="property: position; from: 0 2.8 -4; to: 0 3.0 -4; dur: 2000; dir: alternate; loop: true; easing: easeInOutSine">
+      </a-entity>
       
-      <a-entity id="dragonboat-festival-english" position="0 2 -4"
-                text="value: DRAGON BOAT FESTIVAL; color: #f4c430; align: center; width: 6"></a-entity>
+      <a-entity id="dragonboat-festival-english" position="0 2.2 -4"
+                text="value: DRAGON BOAT FESTIVAL; color: #f4c430; align: center; width: 6; font: mozillavr"
+                animation="property: position; from: 0 2.2 -4; to: 0 2.4 -4; dur: 2500; dir: alternate; loop: true; easing: easeInOutSine">
+      </a-entity>
       
-      <!-- 红色测试小球 -->
-      <a-sphere position="0 1.5 -4" radius="0.2" color="#ff0000" material="emissive: #ff0000"></a-sphere>
+      <!-- 发光文字效果球 -->
+      <a-sphere position="0 2.5 -3.8" radius="0.15" 
+               material="color: #c41e3a; emissive: #c41e3a; emissiveIntensity: 0.5; transparent: true; opacity: 0.8"
+               animation="property: scale; from: 1 1 1; to: 1.2 1.2 1.2; dur: 1000; dir: alternate; loop: true">
+      </a-sphere>
       
-      <!-- 粽子 3D 模型（简单几何体组合） -->
-      <a-entity id="zongzi" position="1.5 0.3 -2" rotation="0 45 0">
+      <!-- 粽子 3D 模型（带动画浮动） -->
+      <a-entity id="zongzi" position="1.5 0.5 -2" rotation="0 45 0"
+                animation="property: position; from: 1.5 0.5 -2; to: 1.5 0.7 -2; dur: 2000; dir: alternate; loop: true; easing: easeInOutSine">
         <!-- 粽子 body -->
         <a-cone position="0 0.3 0"
                  radius-bottom="0.15"
@@ -83,7 +134,8 @@
       </a-entity>
       
       <!-- 第二个粽子 -->
-      <a-entity id="zongzi2" position="-1 0.25 -1.5" rotation="0 -30 0">
+      <a-entity id="zongzi2" position="-1.5 0.5 -3" rotation="0 -30 0"
+                animation="property: position; from: -1.5 0.5 -3; to: -1.5 0.65 -3; dur: 2500; dir: alternate; loop: true; easing: easeInOutSine">
         <a-cone position="0 0.25 0"
                  radius-bottom="0.12"
                  radius-top="0.06"
@@ -96,7 +148,72 @@
                depth="0.02"
                color="#8b4513"></a-box>
       </a-entity>
-      <a-entity id="sky" geometry="primitive:sphere; radius:30; phiLength:360; phiStart:0; thetaLength:90" material="shader:flat; side:back; height:2048; src:#skymap; width:2048"></a-entity>
+      
+      <!-- 龙舟 3D 模型 -->
+      <a-entity id="dragonboat" position="-4 0.2 -6" rotation="0 20 0"
+                animation="property: position; from: -4 0.2 -6; to: -4 0.35 -6; dur: 3000; dir: alternate; loop: true; easing: easeInOutSine">
+        <!-- 龙舟船体 -->
+        <a-box position="0 0.1 0" width="2.5" height="0.2" depth="0.6"
+               color="#8b4513" material="opacity: 0.9"></a-box>
+        <!-- 龙舟船头（三角形） -->
+        <a-cone position="1.4 0.1 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0.1" height="0.5"
+               color="#c41e3a"></a-cone>
+        <!-- 龙舟船尾 -->
+        <a-cone position="-1.4 0.1 0" rotation="0 0 90" radius-bottom="0.4" radius-top="0.1" height="0.5"
+               color="#c41e3a"></a-cone>
+        <!-- 龙眼睛 -->
+        <a-sphere position="1.5 0.25 0.15" radius="0.08" color="#ffd700"></a-sphere>
+        <a-sphere position="1.5 0.25 -0.15" radius="0.08" color="#ffd700"></a-sphere>
+        <!-- 龙舟装饰线 -->
+        <a-box position="0 0.25 0" width="2.8" height="0.02" depth="0.02" color="#ffd700"></a-box>
+      </a-entity>
+      
+      <!-- 灯笼 1（红色） -->
+      <a-entity id="lantern1" position="3 3 -3"
+                animation="property: position; from: 3 3 -3; to: 3 3.3 -3; dur: 2500; dir: alternate; loop: true; easing: easeInOutSine">
+        <a-sphere position="0 0 0" radius="0.25" color="#c41e3a" material="emissive: #c41e3a; emissiveIntensity: 0.3; transparent: true; opacity: 0.9"></a-sphere>
+        <a-cylinder position="0 0.3 0" radius="0.05" height="0.15" color="#ffd700"></a-cylinder>
+        <a-cylinder position="0 -0.3 0" radius="0.05" height="0.15" color="#ffd700"></a-cylinder>
+        <a-cone position="0 0.4 0" radius-bottom="0.15" radius-top="0.02" height="0.2" color="#8b4513"></a-cone>
+        <!-- 灯笼光晕 -->
+        <a-sphere position="0 0 0" radius="0.4" 
+                 material="color: #ff6b35; opacity: 0.2; transparent: true; shader: flat"></a-sphere>
+      </a-entity>
+      
+      <!-- 灯笼 2（金色） -->
+      <a-entity id="lantern2" position="-2.5 2.8 -4"
+                animation="property: position; from: -2.5 2.8 -4; to: -2.5 3.1 -4; dur: 3000; dir: alternate; loop: true; easing: easeInOutSine">
+        <a-sphere position="0 0 0" radius="0.2" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.3; transparent: true; opacity: 0.9"></a-sphere>
+        <a-cylinder position="0 0.25 0" radius="0.04" height="0.12" color="#c41e3a"></a-cylinder>
+        <a-cylinder position="0 -0.25 0" radius="0.04" height="0.12" color="#c41e3a"></a-cylinder>
+        <a-cone position="0 0.35 0" radius-bottom="0.12" radius-top="0.02" height="0.18" color="#8b4513"></a-cone>
+      </a-entity>
+      
+      <!-- 灯笼 3（红色） -->
+      <a-entity id="lantern3" position="4 3.5 -5"
+                animation="property: position; from: 4 3.5 -5; to: 4 3.8 -5; dur: 2800; dir: alternate; loop: true; easing: easeInOutSine">
+        <a-sphere position="0 0 0" radius="0.22" color="#ff6b35" material="emissive: #ff6b35; emissiveIntensity: 0.3; transparent: true; opacity: 0.9"></a-sphere>
+        <a-cylinder position="0 0.28 0" radius="0.045" height="0.14" color="#ffd700"></a-cylinder>
+        <a-cylinder position="0 -0.28 0" radius="0.045" height="0.14" color="#ffd700"></a-cylinder>
+        <a-cone position="0 0.38 0" radius-bottom="0.14" radius-top="0.02" height="0.2" color="#8b4513"></a-cone>
+      </a-entity>
+      
+      <!-- 端午节主题粒子/星星效果 -->
+      <a-entity id="particles">
+        <a-sphere position="2 4 -5" radius="0.05" color="#ffd700"
+                 animation="property: material.emissiveIntensity; from: 0.2; to: 1; dur: 1500; dir: alternate; loop: true"></a-sphere>
+        <a-sphere position="-3 3.5 -4" radius="0.04" color="#ffd700"
+                 animation="property: material.emissiveIntensity; from: 0.2; to: 1; dur: 1800; dir: alternate; loop: true"></a-sphere>
+        <a-sphere position="1 5 -6" radius="0.06" color="#ffd700"
+                 animation="property: material.emissiveIntensity; from: 0.2; to: 1; dur: 2000; dir: alternate; loop: true"></a-sphere>
+        <a-sphere position="-1 4.5 -5" radius="0.05" color="#ffd700"
+                 animation="property: material.emissiveIntensity; from: 0.2; to: 1; dur: 1600; dir: alternate; loop: true"></a-sphere>
+        <a-sphere position="3.5 4 -4" radius="0.04" color="#ffd700"
+                 animation="property: material.emissiveIntensity; from: 0.2; to: 1; dur: 1900; dir: alternate; loop: true"></a-sphere>
+      </a-entity>
+      
+      <!-- 删除旧的天空元素，使用新的 dragonboat-sky -->
+      <!-- <a-entity id="sky" ... -->
 
       <a-entity id="hitEntityLeft" material="shader:flat; color: #ff3468" obj-model="obj: #hitEntityObj"></a-entity>
       <a-entity id="hitEntityRight" material="shader:flat; color: #ff3468" obj-model="obj: #hitEntityObj"></a-entity>
@@ -261,10 +378,15 @@
       </a-entity>
     </a-scene>
     
-    <!-- 端午节主题叠加层 -->
+    <!-- 端午节主题叠加层 - 优化版 -->
     <div id="dragonboat-festival-banner">
-      <h1>🐉 端午安康 🍃</h1>
-      <h2>DRAGON BOAT FESTIVAL</h2>
+      <div class="banner-content">
+        <h1>🐉 端午安康 🍃</h1>
+        <h2>DRAGON BOAT FESTIVAL</h2>
+        <p class="subtitle">用 VR 画笔绘出端午的记忆</p>
+      </div>
+      <div class="decoration left"></div>
+      <div class="decoration right"></div>
     </div>
     
     <a href="https://github.com/cpufreestyle/vr-paint"><div id="apainter-logo" class="hidden"></div><div id="apainter-author" style="display:none" class="hidden">MichaelQiu</div></a>
