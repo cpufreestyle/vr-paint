@@ -40,54 +40,172 @@
         <audio id="ui_paint" src="https://cdn.aframe.io/a-painter/sounds/ui_paint.ogg"></audio>
       </a-assets>
       
-      <!--端午节增强版场景-->
-      <a-light type="ambient" light="color: #f4c430; intensity: 0.3"></a-light>
-      <a-light type="point" light="color: #ff6b35; intensity: 1.2" position="5 8 -3"></a-light>
-      <a-light type="point" light="color: #c41e3a; intensity: 0.8" position="-5 6 2"></a-light>
-      <a-light type="point" light="color: #ffd700; intensity: 0.6" position="0 10 0"></a-light>
-      <a-light type="directional" light="color: #fff5e6; intensity: 0.5" position="2 4 3"></a-light>
+      <!--端午节真实系场景-->
+      <!--真实光照系统-->
+      <a-light type="ambient" light="color: #ffd4a3; intensity: 0.4"></a-light>
+      <a-light type="directional" light="color: #ff8c42; intensity: 0.8" position="-1 2 1"></a-light>
+      <a-light type="point" light="color: #ffb347; intensity: 0.6" position="3 4 -2"></a-light>
+      <a-light type="point" light="color: #ff6b6b; intensity: 0.3" position="-2 3 2"></a-light>
       
-      <!--端午节渐变天空-->
-      <a-sky id="dragonboat-sky" 
-             geometry="primitive:sphere; radius:40; phiLength:360; phiStart:0; thetaLength:180"
+      <!--夕阳黄昏天空-->
+      <a-sky id="sunset-sky"
+             geometry="primitive:sphere; radius:50; phiLength:360; phiStart:0; thetaLength:180"
              material="shader: flat; side:back; color: #1a0a2e">
-        <a-animation attribute="material.color" from="#1a0a2e" to="#2d1b4e" dur="8000" direction="alternate" repeat="indefinite"></a-animation>
       </a-sky>
       
-      <!--夕阳余晖-->
-      <a-circle id="sunset-glow" 
-                position="0 3 -20" 
-                radius="8" 
-                material="shader: flat; color: #ff6b35; opacity: 0.6; transparent: true">
-        <a-animation attribute="material.opacity" from="0.4" to="0.7" dur="4000" direction="alternate" repeat="indefinite"></a-animation>
+      <!--天空渐变层-->
+      <a-circle position="0 8 -30" radius="25" rotation="-90 0 0"
+               material="shader: flat; color: #ff6b35; opacity: 0.6; transparent: true; side: double"></a-circle>
+      <a-circle position="0 10 -28" radius="22" rotation="-90 0 0"
+               material="shader: flat; color: #ffa500; opacity: 0.5; transparent: true; side: double"></a-circle>
+      <a-circle position="0 12 -25" radius="20" rotation="-90 0 0"
+               material="shader: flat; color: #ffb347; opacity: 0.4; transparent: true; side: double"></a-circle>
+      
+      <!--夕阳/晚霞-->
+      <a-circle position="0 3 -25" radius="6"
+               material="shader: flat; color: #ff4500; opacity: 0.8; transparent: true"
+               animation="property: material.opacity; from: 0.6; to: 0.9; dur: 5000; direction: alternate; loop: true">
       </a-circle>
       
-      <!--端午节水面/地面-->
-      <a-plane id="water-ground"
-               position="0 -0.1 0" 
-               rotation="-90 0 0" 
-               width="50" 
-               height="50"
-               material="color: #0a3d62; opacity: 0.9; transparent: true; metalness: 0.8; roughness: 0.2">
-        <a-animation attribute="material.color" from="#0a3d62" to="#1e5f74" dur="6000" direction="alternate" repeat="indefinite"></a-animation>
+      <!--真实水面效果-->
+      <a-plane id="water-surface"
+               position="0 0 0"
+               rotation="-90 0 0"
+               width="60"
+               height="60"
+               material="color: #1a5276; opacity: 0.85; transparent: true; metalness: 0.9; roughness: 0.1">
       </a-plane>
       
-      <!--水波纹效果-->
-      <a-ring id="ripple1" position="2 0.05 -3" rotation="-90 0 0" radius-inner="0.1" radius-outer="0.3"
-              material="color: #4ecdc4; opacity: 0.5; transparent: true; shader: flat">
-        <a-animation attribute="scale" from="1 1 1" to="3 3 1" dur="3000" repeat="indefinite"></a-animation>
-        <a-animation attribute="material.opacity" from="0.6" to="0" dur="3000" repeat="indefinite"></a-animation>
+      <!--水面倒影（半透明层）-->
+      <a-plane position="0 0.02 0" rotation="-90 0 0" width="60" height="60"
+               material="shader: flat; color: #3498db; opacity: 0.2; transparent: true">
+        <a-animation attribute="material.opacity" from="0.15" to="0.3" dur="4000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-plane>
+      
+      <!--水波纹-->
+      <a-ring position="3 0.03 -4" rotation="-90 0 0" radius-inner="0.2" radius-outer="0.4"
+              material="shader: flat; color: #85c1e9; opacity: 0.4; transparent: true">
+        <a-animation attribute="scale" from="1 1 1" to="5 5 1" dur="4000" repeat="indefinite"></a-animation>
+        <a-animation attribute="material.opacity" from="0.5" to="0" dur="4000" repeat="indefinite"></a-animation>
       </a-ring>
-      <a-ring id="ripple2" position="-2 0.05 -2" rotation="-90 0 0" radius-inner="0.1" radius-outer="0.3"
-              material="color: #4ecdc4; opacity: 0.5; transparent: true; shader: flat">
-        <a-animation attribute="scale" from="1 1 1" to="3 3 1" dur="4000" repeat="indefinite"></a-animation>
-        <a-animation attribute="material.opacity" from="0.6" to="0" dur="4000" repeat="indefinite"></a-animation>
+      <a-ring position="-4 0.03 -6" rotation="-90 0 0" radius-inner="0.2" radius-outer="0.4"
+              material="shader: flat; color: #85c1e9; opacity: 0.4; transparent: true">
+        <a-animation attribute="scale" from="1 1 1" to="6 6 1" dur="5000" repeat="indefinite"></a-animation>
+        <a-animation attribute="material.opacity" from="0.5" to="0" dur="5000" repeat="indefinite"></a-animation>
       </a-ring>
-      <a-ring id="ripple3" position="0 0.05 -5" rotation="-90 0 0" radius-inner="0.1" radius-outer="0.3"
-              material="color: #4ecdc4; opacity: 0.5; transparent: true; shader: flat">
-        <a-animation attribute="scale" from="1 1 1" to="4 4 1" dur="5000" repeat="indefinite"></a-animation>
-        <a-animation attribute="material.opacity" from="0.6" to="0" dur="5000" repeat="indefinite"></a-animation>
+      <a-ring position="0 0.03 -8" rotation="-90 0 0" radius-inner="0.2" radius-outer="0.4"
+              material="shader: flat; color: #85c1e9; opacity: 0.4; transparent: true">
+        <a-animation attribute="scale" from="1 1 1" to="7 7 1" dur="6000" repeat="indefinite"></a-animation>
+        <a-animation attribute="material.opacity" from="0.5" to="0" dur="6000" repeat="indefinite"></a-animation>
       </a-ring>
+      
+      <!--精致龙舟-->
+      <a-entity id="dragonboat-detailed" position="-5 0.15 -8" rotation="0 25 0">
+        <a-box position="0 0.08 0" width="3" height="0.2" depth="0.8" color="#8b4513" material="opacity: 0.95"></a-box>
+        <a-cylinder position="0 0 0" rotation="0 0 90" radius="0.4" height="3" color="#6b3410" material="opacity: 0.9"></a-cylinder>
+        <a-cone position="1.7 0.08 0" rotation="0 0 -90" radius-bottom="0.45" radius-top="0.1" height="0.6" color="#c41e3a"></a-cone>
+        <a-sphere position="1.85 0.2 0.15" radius="0.06" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.5"></a-sphere>
+        <a-sphere position="1.85 0.2 -0.15" radius="0.06" color="#ffd700" material="emissive: #ffd700; emissiveIntensity: 0.5"></a-sphere>
+        <a-cylinder position="1.5 0.4 0.3" rotation="0 0 -30" radius="0.02" height="0.3" color="#daa520"></a-cylinder>
+        <a-cylinder position="1.5 0.4 -0.3" rotation="0 0 30" radius="0.02" height="0.3" color="#daa520"></a-cylinder>
+        <a-cone position="-1.6 0.08 0" rotation="0 0 90" radius-bottom="0.35" radius-top="0.08" height="0.5" color="#c41e3a"></a-cone>
+        <a-box position="0 0.22 0.42" width="3.2" height="0.03" depth="0.03" color="#ffd700"></a-box>
+        <a-box position="0 0.22 -0.42" width="3.2" height="0.03" depth="0.03" color="#ffd700"></a-box>
+        <a-cylinder position="0.3 0.35 0.5" rotation="70 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="0.3 0.35 -0.5" rotation="110 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="-0.6 0.35 0.5" rotation="70 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="-0.6 0.35 -0.5" rotation="110 0 0" radius="0.025" height="0.8" color="#d2691e"></a-cylinder>
+        <a-cylinder position="0 0.35 0" rotation="90 0 0" radius="0.15" height="0.25" color="#c41e3a"></a-cylinder>
+        <a-cylinder position="0 0.38 0" rotation="90 0 0" radius="0.18" height="0.03" color="#ffd700"></a-cylinder>
+      </a-entity>
+      
+      <!--远处龙舟-->
+      <a-entity position="6 0.12 -12" rotation="0 -15 0" scale="0.8 0.8 0.8">
+        <a-box position="0 0.08 0" width="3" height="0.2" depth="0.8" color="#8b4513" material="opacity: 0.8"></a-box>
+        <a-cone position="1.6 0.08 0" rotation="0 0 -90" radius-bottom="0.4" radius-top="0.1" height="0.5" color="#ffd700"></a-cone>
+        <a-cone position="-1.5 0.08 0" rotation="0 0 90" radius-bottom="0.35" radius-top="0.08" height="0.4" color="#ffd700"></a-cone>
+      </a-entity>
+      
+      <!--真实粽子-->
+      <a-entity id="zongzi-real" position="2 0.15 -3" rotation="0 30 0">
+        <a-box position="0 0.15 0" width="0.35" height="0.25" depth="0.25" color="#f5f5dc" material="opacity: 0.95"></a-box>
+        <a-cone position="0 0.35 0" rotation="0 0 0" radius-bottom="0.18" radius-top="0" height="0.2" color="#f5f5dc" material="opacity: 0.95"></a-cone>
+        <a-box position="0.2 0.15 0" rotation="0 0 15" width="0.4" height="0.02" depth="0.15" color="#228b22"></a-box>
+        <a-box position="-0.2 0.15 0" rotation="0 0 -15" width="0.4" height="0.02" depth="0.15" color="#228b22"></a-box>
+        <a-box position="0 0.15 0.2" rotation="15 0 0" width="0.15" height="0.02" depth="0.35" color="#228b22"></a-box>
+        <a-box position="0 0.15 -0.2" rotation="-15 0 0" width="0.15" height="0.02" depth="0.35" color="#228b22"></a-box>
+        <a-torus position="0 0.15 0" rotation="90 0 0" radius="0.13" radius-tubular="0.01" color="#8b4513" material="opacity: 0.9"></a-torus>
+      </a-entity>
+      
+      <!--第二个粽子-->
+      <a-entity position="-2 0.12 -4" rotation="0 -20 0">
+        <a-box position="0 0.12 0" width="0.3" height="0.22" depth="0.22" color="#f5f5dc" material="opacity: 0.9"></a-box>
+        <a-cone position="0 0.3 0" radius-bottom="0.15" radius-top="0" height="0.18" color="#f5f5dc" material="opacity: 0.9"></a-cone>
+        <a-box position="0.18 0.12 0" rotation="0 0 10" width="0.35" height="0.02" depth="0.12" color="#2e8b57"></a-box>
+        <a-box position="0 0.12 0.18" rotation="10 0 0" width="0.12" height="0.02" depth="0.3" color="#2e8b57"></a-box>
+        <a-torus position="0 0.12 0" rotation="90 0 0" radius="0.11" radius-tubular="0.008" color="#8b4513" material="opacity: 0.85"></a-torus>
+      </a-entity>
+      
+      <!--传统纸灯笼-->
+      <a-entity id="lantern-traditional" position="3.5 3.5 -4">
+        <a-sphere position="0 0 0" radius="0.35" color="#c41e3a" material="opacity: 0.9"></a-sphere>
+        <a-torus position="0 0.32 0" rotation="90 0 0" radius="0.12" radius-tubular="0.015" color="#daa520"></a-torus>
+        <a-torus position="0 -0.32 0" rotation="90 0 0" radius="0.12" radius-tubular="0.015" color="#daa520"></a-torus>
+        <a-cylinder position="0 0.48 0" radius="0.02" height="0.2" color="#daa520"></a-cylinder>
+        <a-sphere position="0 0 0" radius="0.2" color="#ffd700" material="emissive: #ff8c00; emissiveIntensity: 0.8; transparent: true; opacity: 0.7"></a-sphere>
+        <a-sphere position="0 0 0" radius="0.6" material="shader: flat; color: #ff8c00; opacity: 0.15; transparent: true">
+          <a-animation attribute="material.opacity" from="0.1" to="0.2" dur="3000" direction="alternate" repeat="indefinite"></a-animation>
+        </a-sphere>
+        <a-box position="0 -0.4 0" width="0.02" height="0.15" depth="0.02" color="#8b0000"></a-box>
+      </a-entity>
+      
+      <!--第二个灯笼-->
+      <a-entity position="-3 3 -5">
+        <a-sphere position="0 0 0" radius="0.28" color="#ffd700" material="opacity: 0.9"></a-sphere>
+        <a-torus position="0 0.26 0" rotation="90 0 0" radius="0.1" radius-tubular="0.012" color="#c41e3a"></a-torus>
+        <a-torus position="0 -0.26 0" rotation="90 0 0" radius="0.1" radius-tubular="0.012" color="#c41e3a"></a-torus>
+        <a-cylinder position="0 0.4 0" radius="0.015" height="0.16" color="#c41e3a"></a-cylinder>
+        <a-sphere position="0 0 0" radius="0.16" color="#ff8c00" material="emissive: #ffd700; emissiveIntensity: 0.7; transparent: true; opacity: 0.65"></a-sphere>
+        <a-sphere position="0 0 0" radius="0.5" material="shader: flat; color: #ffd700; opacity: 0.12; transparent: true">
+          <a-animation attribute="material.opacity" from="0.08" to="0.18" dur="3500" direction="alternate" repeat="indefinite"></a-animation>
+        </a-sphere>
+      </a-entity>
+      
+      <!--芦苇丛-->
+      <a-entity id="reeds" position="-4 0 -2">
+        <a-cylinder position="0 0.8 0" radius="0.02" height="1.6" color="#8b7355"></a-cylinder>
+        <a-cylinder position="0.15 0.7 0.1" radius="0.018" height="1.4" color="#9b8465" rotation="0 0 8"></a-cylinder>
+        <a-cylinder position="-0.12 0.75 -0.08" radius="0.018" height="1.5" color="#7a6345" rotation="0 0 -5"></a-cylinder>
+        <a-cone position="0 1.7 0" radius-bottom="0.06" radius-top="0.01" height="0.4" color="#d4a574"></a-cone>
+        <a-cone position="0.15 1.6 0.1" radius-bottom="0.05" radius-top="0.01" height="0.35" color="#c49464" rotation="5 0 10"></a-cone>
+        <a-cone position="-0.12 1.65 -0.08" radius-bottom="0.055" radius-top="0.01" height="0.38" color="#b48454" rotation="-3 0 -8"></a-cone>
+      </a-entity>
+      
+      <!--艾草束-->
+      <a-entity position="4 0 -3" rotation="0 45 0">
+        <a-cylinder position="0 0.4 0" radius="0.015" height="0.8" color="#6b8e23"></a-cylinder>
+        <a-box position="0.05 0.5 0" rotation="0 0 20" width="0.25" height="0.04" depth="0.08" color="#556b2f" material="opacity: 0.9"></a-box>
+        <a-box position="-0.04 0.55 0.03" rotation="0 30 15" width="0.22" height="0.04" depth="0.07" color="#6b8e23" material="opacity: 0.9"></a-box>
+        <a-box position="0.02 0.6 -0.04" rotation="0 -20 -12" width="0.2" height="0.04" depth="0.06" color="#8fbc8f" material="opacity: 0.9"></a-box>
+      </a-entity>
+      
+      <!--月亮-->
+      <a-circle position="-8 12 -20" radius="3" material="shader: flat; color: #fffacd; opacity: 0.9; transparent: true">
+        <a-animation attribute="material.opacity" from="0.7" to="0.95" dur="8000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-circle>
+      <a-circle position="-8 12 -21" radius="4.5" material="shader: flat; color: #fffacd; opacity: 0.15; transparent: true"></a-circle>
+      
+      <!--端午安康文字-->
+      <a-entity id="festival-title" position="0 3 -6" animation="property: position; from: 0 3 -6; to: 0 3.3 -6; dur: 3000; direction: alternate; loop: true; easing: easeInOutSine">
+        <a-text value="端午安康" color="#ffd700" align="center" width="12" font="mozillavr" text="anchor: center; baseline: center"></a-text>
+        <a-text value="DRAGON BOAT FESTIVAL" color="#ffffff" align="center" width="8" position="0 -0.5 0" font="mozillavr" text="anchor: center; baseline: center"></a-text>
+      </a-entity>
+      
+      <!--远处雾气-->
+      <a-plane position="0 1.5 -20" rotation="-90 0 0" width="40" height="10"
+              material="shader: flat; color: #e8daef; opacity: 0.15; transparent: true">
+        <a-animation attribute="material.opacity" from="0.08" to="0.2" dur="10000" direction="alternate" repeat="indefinite"></a-animation>
+      </a-plane>
       
       <a-entity id="logo" logo-model
                 animation="dur: 4000; property: logo-model.opacity; from: 1; to: 0; startEvents: painting-started"></a-entity>
